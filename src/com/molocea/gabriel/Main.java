@@ -14,8 +14,8 @@ public class Main {
     @SuppressWarnings("serial")
     public class MainUI extends JFrame implements ActionListener {
 
-        private JButton main_btnClient;
-        private JButton main_btnServer;
+        private JButton main_buttonClient;
+        private JButton main_buttonServer;
 
     public MainUI() {
         // Creating window setting it up
@@ -27,19 +27,19 @@ public class Main {
         this.setVisible(true);
 
         // Defining the buttons
-        main_btnClient = new JButton("Client");
-        main_btnServer = new JButton("Server");
+        main_buttonClient = new JButton("Client");
+        main_buttonServer = new JButton("Server");
 
-        main_btnClient.addActionListener(this);
-        main_btnServer.addActionListener(this);
+        main_buttonClient.addActionListener(this);
+        main_buttonServer.addActionListener(this);
 
-        this.add(main_btnClient);
-        this.add(main_btnServer);
+        this.add(main_buttonClient);
+        this.add(main_buttonServer);
         displayClient();
     }
     public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == main_btnClient) displayClient();
-        if (event.getSource() == main_btnServer) displayClient();
+        if (event.getSource() == main_buttonClient) displayClient();
+        if (event.getSource() == main_buttonServer) displayClient();
     }
     private void displayClient() {
         SwingUtilities.invokeLater(() -> new ClientUI());
