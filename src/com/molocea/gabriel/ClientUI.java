@@ -34,6 +34,22 @@ public class ClientUI extends JFrame implements ActionListener, GUIInterface {
     private ClientInterface m_crypt;
 
     public ClientUI() {
+        super("Client");
+        this.setSize(500,800);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SpringLayout layout = new SpringLayout();
+        this.setLayout(layout);
+        this.setVisible(true);
+
+        // Host
+        m_buttonStart = new JButton("Connect");
+        m_buttonStop = new JButton("Disconnect");
+        m_buttonStop.setEnabled(false);
+        m_buttonStart.addActionListener(this);
+        m_buttonStop.addActionListener(this);
+
+        // Data to be sent
 
     }
 }
