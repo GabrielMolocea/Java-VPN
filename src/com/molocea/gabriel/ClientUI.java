@@ -50,6 +50,18 @@ public class ClientUI extends JFrame implements ActionListener, GUIInterface {
         m_buttonStop.addActionListener(this);
 
         // Data to be sent
+        m_labelInput = new JLabel("Data to be Sent:");
+        m_txtInput = new TextField();
+        m_buttonInput = new JButton("Sent");
+        m_txtInput.setEditable(false);
+        m_buttonInput.setEnabled(false);
+        m_buttonInput.addActionListener(this);
+
+        // Data as Received
+        m_labelConsole = new JLabel("Data as Received");
+        m_txtConsole = new JTextArea();
+        m_txtConsole.setEditable(false);
+        JScrollPane txtConsoleScroll = new JScrollPane(m_txtConsole);
 
     }
 }
