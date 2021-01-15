@@ -63,5 +63,12 @@ public class ClientUI extends JFrame implements ActionListener, GUIInterface {
         m_txtConsole.setEditable(false);
         JScrollPane txtConsoleScroll = new JScrollPane(m_txtConsole);
 
+        // Host
+        layout.putConstraint(SpringLayout.WEST, m_txtHost, 110, SpringLayout.WEST, this.getContentPane());
+        layout.putConstraint(SpringLayout.EAST, m_txtHost, -5, SpringLayout.EAST, this.getContentPane());
+        layout.putConstraint(SpringLayout.EAST, m_labelHost, -5, SpringLayout.WEST, m_txtHost);
+
+        // Port
+        layout.putConstraint(SpringLayout.WEST, m_textPort, 0, SpringLayout.WEST, m_txtHost);
     }
 }
