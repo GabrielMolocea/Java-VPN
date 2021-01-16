@@ -1,9 +1,12 @@
 package com.molocea.gabriel;
 
+import com.sun.security.ntlm.Client;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class ClientUI extends JFrame implements ActionListener, GUIInterface {
     
     // Host 
@@ -70,5 +73,74 @@ public class ClientUI extends JFrame implements ActionListener, GUIInterface {
 
         // Port
         layout.putConstraint(SpringLayout.WEST, m_textPort, 0, SpringLayout.WEST, m_txtHost);
+        layout.putConstraint(SpringLayout.NORTH, m_textPort, 5, SpringLayout.SOUTH, m_txtHost);
+
+        layout.putConstraint(SpringLayout.EAST, m_labelPort, -5, SpringLayout.WEST, m_textPort);
+        layout.putConstraint(SpringLayout.NORTH, m_labelPort, 5, SpringLayout.SOUTH, m_txtHost);
+        
+        // Shared Key
+        //Shared Key
+        layout.putConstraint(SpringLayout.WEST, m_txtSharedKey, 0, SpringLayout.WEST, m_txtHost );
+        layout.putConstraint(SpringLayout.NORTH, m_txtSharedKey, 5, SpringLayout.SOUTH, m_txtHost );
+        layout.putConstraint(SpringLayout.EAST, m_txtSharedKey, -5, SpringLayout.EAST, this.getContentPane());
+
+        layout.putConstraint(SpringLayout.EAST, m_labelSharedKey, -5, SpringLayout.WEST, m_txtHost );
+        layout.putConstraint(SpringLayout.NORTH, m_labelSharedKey, 5, SpringLayout.SOUTH, m_txtHost );
+
+
+        //Start / Stop
+        layout.putConstraint(SpringLayout.NORTH, m_buttonStart, 5, SpringLayout.SOUTH, m_txtSharedKey);
+        layout.putConstraint(SpringLayout.WEST, m_buttonStart, 0, SpringLayout.WEST, m_txtSharedKey);
+
+        layout.putConstraint(SpringLayout.NORTH, m_buttonStop, 5, SpringLayout.SOUTH, m_txtSharedKey);
+        layout.putConstraint(SpringLayout.WEST, m_buttonStop, 5, SpringLayout.EAST, m_buttonStart);
+
+        //Data to be Sent
+        layout.putConstraint(SpringLayout.WEST, m_txtInput, 0, SpringLayout.WEST, m_buttonStart );
+        layout.putConstraint(SpringLayout.NORTH, m_txtInput, 5, SpringLayout.SOUTH, m_buttonStart );
+        layout.putConstraint(SpringLayout.EAST, m_txtInput, -74, SpringLayout.EAST, this.getContentPane());
+
+        layout.putConstraint(SpringLayout.EAST, m_labelInput, -5, SpringLayout.WEST, m_buttonStart);
+        layout.putConstraint(SpringLayout.NORTH, m_labelInput, 5, SpringLayout.SOUTH, m_buttonStart );
+
+        layout.putConstraint(SpringLayout.WEST, m_buttonInput, 5, SpringLayout.EAST, m_txtInput );
+        layout.putConstraint(SpringLayout.NORTH, m_buttonInput, 5, SpringLayout.SOUTH, m_buttonStart );
+
+
+        //Data as Received
+        layout.putConstraint(SpringLayout.WEST, txtConsoleScroll, 0, SpringLayout.WEST, m_txtInput );
+        layout.putConstraint(SpringLayout.NORTH, txtConsoleScroll, 5, SpringLayout.SOUTH, m_txtInput );
+        layout.putConstraint(SpringLayout.SOUTH, txtConsoleScroll, -5, SpringLayout.SOUTH, this.getContentPane());
+        layout.putConstraint(SpringLayout.EAST, txtConsoleScroll, -5, SpringLayout.EAST, this.getContentPane());
+
+        layout.putConstraint(SpringLayout.EAST, m_labelConsole, -5, SpringLayout.WEST, txtConsoleScroll );
+        layout.putConstraint(SpringLayout.NORTH, m_labelConsole, 5, SpringLayout.SOUTH, m_txtInput );
+
+        //Host
+        this.add(m_labelHost);
+        this.add(m_txtHost);
+
+        //Port
+        this.add(m_labelPort);
+        this.add(m_textPort);
+
+        //Shared Key
+        this.add(m_labelSharedKey);
+        this.add(m_txtSharedKey);
+
+        //Start / Stop
+        this.add(m_buttonStart);
+        this.add(m_buttonStop);
+
+        //Data to be Sent
+        this.add(m_labelInput);
+        this.add(m_txtInput);
+        this.add(m_buttonInput);
+
+        //Data as Received
+        this.add(m_labelConsole);
+        this.add(txtConsoleScroll);
+
+        m_crypt = new Client(this);
     }
 }
