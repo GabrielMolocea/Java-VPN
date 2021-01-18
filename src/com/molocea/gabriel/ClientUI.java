@@ -4,6 +4,7 @@ import com.sun.security.ntlm.Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
@@ -142,5 +143,26 @@ public class ClientUI extends JFrame implements ActionListener, GUIInterface {
         this.add(txtConsoleScroll);
 
         m_crypt = new Client(this);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == m_buttonStart) {
+            start();
+        } else if (e.getSource() == m_buttonStop) {
+            stop();
+        } else if (e.getSource() == m_buttonInput) {
+            send();
+        }
+    }
+
+    private void send() {
+        String data = m_txtInput.getText();
+
+    }
+    private void stop(){
+
+    }
+    private void start(){
+
     }
 }
